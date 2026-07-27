@@ -14,11 +14,25 @@ if not TOKEN:
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Send a welcome message when the /start command is issued."""
-    await update.message.reply_text("Hello! I'm your Forex analysis bot. Use /help to see commands.")
+    await update.message.reply_text(
+        "🤖 Welcome to ForexBot!\n\n"
+        "I'm your Forex analysis assistant. Here are my commands:\n"
+        "/start - Show this message\n"
+        "/help - Get help\n"
+        "/news - Get latest Forex news\n"
+        "/analyze - Analyze currency pairs"
+    )
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Send a help message when the /help command is issued."""
-    await update.message.reply_text("Available commands: /start, /help, /news, /analyze")
+    await update.message.reply_text(
+        "📊 Available Commands:\n\n"
+        "/start - Welcome message\n"
+        "/help - Show this help menu\n"
+        "/news - Latest Forex news\n"
+        "/analyze - Analyze currency pairs\n\n"
+        "🔧 Coming soon: Real-time price alerts, technical analysis, and more!"
+    )
 
 def main() -> None:
     """Start the bot."""
