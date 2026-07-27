@@ -13,11 +13,8 @@ logger = logging.getLogger(__name__)
 # Get token from environment
 TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
 
-# Fallback for testing (REMOVE AFTER FIXING ENV VARIABLE)
 if not TOKEN:
-    logger.warning("TELEGRAM_BOT_TOKEN not found in environment!")
-    # Only use this for testing - replace with your actual token
-    # TOKEN = "YOUR_BOT_TOKEN_HERE"
+    logger.error("TELEGRAM_BOT_TOKEN not found in environment!")
     raise ValueError("TELEGRAM_BOT_TOKEN environment variable not set.")
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -37,7 +34,7 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
 
 def main() -> None:
     try:
-        logger.info("Bot is starting with Python version...")
+        logger.info("Bot is starting...")
         application = Application.builder().token(TOKEN).build()
         application.add_handler(CommandHandler("start", start))
         application.add_handler(CommandHandler("help", help_command))
